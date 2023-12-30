@@ -1,0 +1,14 @@
+{% extends "myfirst_app/base.html" %}
+
+{% block content %}
+<form form action="{% url 'test' %}" method="POST" enctype="multipart/form-data">
+    {% csrf_token %}
+    <div class="mb-3" id="mb-3">
+        <label for="image" class="form-label">Image</label>
+        <input type="file" class="form-control" placeholder="Image link/url" name="image"> <!--required  -->
+    </div>
+    <button type="submit" class="btn btn-primary">submit</button>
+    
+</form>
+
+{% endblock %}

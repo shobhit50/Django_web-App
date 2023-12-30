@@ -1,0 +1,26 @@
+{% extends "myfirst_app/base.html" %}
+
+{% block content %}
+<div class="row">
+    <h2 class="col-6 offset-3">Login</h2>
+    <div class="col-6 offset-3">
+        <form action="{% url 'loginHandler'%}" method="POST" novalidate class="needs-validation">
+            {% csrf_token %}
+            <div class="mb-3">
+                <label for="username" class="form-label">Username (use lowercase)</label>
+                <input type="text" class="form-control" required placeholder="enter username" name="username">
+            </div>
+            <div class="mb-3">
+                <label for="password" class="form-label">enter your password</label>
+                <input type="password" class="form-control" required placeholder="password" name="password">
+            </div>
+            <button class="btn btn-success mb-3" id="btn-success">SingUP</button>
+            <!-- <a href="{% url 'changePassword'%}" class="btn btn-primary mb-3"
+                style="width: max-content !important;">Forget Password</a> -->
+        </form>
+
+
+
+    </div>
+</div>
+{% endblock %}

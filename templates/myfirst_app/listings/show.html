@@ -1,0 +1,232 @@
+{% extends "myfirst_app/base.html" %}
+
+{% block content %}
+
+<body>
+    <div class="Show_page">
+        <div>
+            <h2>
+                {{ listing.title }}
+            </h2>
+            <div class="page_continar">
+                <div class="img_box">
+                    <div class="img_1"><img src="{{ listing.image_url }}" class="card-img-top show-img img-fluid"
+                            alt="..."></div>
+                    <!-- --------------------------------------------------------------------- -->
+                    <div class="img_box2">
+                        <img src="{{ listing.image_url }}" class="box_img" alt="Listing_image" style="
+                        border-radius: 0 0.5rem 0 0 !important;
+                        ">
+                        <img src="{{ listing.image_url }}" class="box_img" alt="Listing_image"
+                            style="border-radius: 0 0 0.5rem 0 !important;">
+                    </div>
+                    <!-- --------------------------------------------------------------------- -->
+
+                </div>
+
+                <div class="data_continer">
+                    <div class="page_data">
+                        <h5>
+                            {{ listing.title }}
+                        </h5>
+                        <hr>
+                        <!-- this is for user detiles -->
+                        <p>
+                            <i class="fa-regular fa-circle-user"></i> Hosted by {{ listing.owner.username }}
+                            <br>
+                            {% if avg %}
+                            &#9733;{{ avg}}
+                            {% endif %}
+
+                        </p>
+                        <hr>
+                        <div>
+                            <div class="page_data2">
+                                <div><i class="fa-solid fa-location-dot" style="    font-size: clamp(16px, 2.5vw, 1.5rem);
+                                    color: #fe424d;"></i></div>
+                                <div>
+                                    <h3>Great location</h3>
+                                    <p>93% of recent guests gave the location a 5-star rating.</p>
+                                </div>
+                            </div>
+                            <div class="page_data2">
+                                <div><i class="fa-solid fa-key" style="    font-size: clamp(16px, 2.5vw, 1.5rem);
+                                    color: #fe424d;"></i></div>
+                                <div>
+                                    <h3>Great check-in experience
+                                    </h3>
+                                    <p>100% of recent guests gave the check-in process a 5-star rating.
+                                    </p>
+                                </div>
+                            </div>
+
+                        </div>
+
+                        <br>
+
+
+                        <!--             -->
+                        <hr>
+                        <p>
+                            {{ listing.description }}
+                        </p>
+                    </div>
+                    <!--------- price card ------------->
+                    <div class="price_card">
+                        <h3>
+
+                            ₹ {{ listing.price }}/ night
+
+                        </h3>
+
+
+                        <!-- <i class="fa-solid fa-map-pin"></i> -->
+                        <p>
+                            {{ listing.location }},&nbsp;
+                            {{ listing.country }}
+
+
+                        </p>
+                        <p style="margin: 0;">18% tax +
+                        </p>
+                        <hr>
+                        <h6>Total After taxes &nbsp; &nbsp; &nbsp; &nbsp;</h6>
+                        <!-- -------------------------------------------------------- ------------------------------------------------------------->
+                        {% if request.user.is_superuser %}
+                        <div class="delete-btn">
+                            <a href="{% url 'edit' listing.id %}" class="btn btn-primary show-btn">Edit</a>
+                            <form action="{% url 'delete' listing.id %}" method="post">
+                                {% csrf_token %}
+                                <button type="submit" class="btn btn-primary">Delete</button>
+                            </form>
+                        </div>
+                        {% elif request.user.is_authenticated %}
+                            {% if request.user.id == listing.owner.id %}
+                            <div class="delete-btn">
+                                <a href="{% url 'edit' listing.id %}" class="btn btn-primary show-btn">Edit</a>
+                                <form action="{% url 'delete' listing.id %}" method="post">
+                                    {% csrf_token %}
+                                    <button type="submit" class="btn btn-primary">Delete</button>
+                                </form>
+                            </div>
+                            {% endif %}
+                        {% endif %}
+
+
+
+                        <!-- <div class="delete-btn">
+                            <a href="{% url 'show' listing.id %}" class="btn btn-primary show-btn">Edit</a>
+                            <form action="{% url 'show' listing.id %}" method="post">
+                                {% csrf_token %}
+                                <button type="submit" class="btn btn-primary">Delete</button>
+                            </form>
+                        </div> -->
+
+                    </div>
+
+                    <!-- ---------------------------------------------------------------------- -->
+                </div>
+            </div>
+
+        </div>
+
+    </div>
+
+
+
+    {% if request.user.is_authenticated %}
+    <hr>
+    <div class="Review_input">
+        <h3 class="mb-3">Leave a Review</h3>
+
+        <form action="{% url 'Reviews' listing.id %}" method="POST" novalidate class="needs-validation">
+            {% csrf_token %}
+            <div class="mb-3">
+                <!-- <label for="range" class="form-label">Rating</label>
+                    <input type="range" name="review[rating]" min="1" max="5"> -->
+
+                <!-- ------- rating -------------------------------------------------->
+                <fieldset class="starability-slot">
+                    <legend>Rating:</legend>
+                    <input type="radio" id="no-rate" class="input-no-rate" name="review[rating]" value="0" checked
+                        aria-label="No rating." />
+                    <input type="radio" id="first-rate1" name="review[rating]" value="1" />
+                    <label for="first-rate1" title="Terrible">1 star</label>
+                    <input type="radio" id="first-rate2" name="review[rating]" value="2" />
+                    <label for="first-rate2" title="Not good">2 stars</label>
+                    <input type="radio" id="first-rate3" name="review[rating]" value="3" />
+                    <label for="first-rate3" title="Average">3 stars</label>
+                    <input type="radio" id="first-rate4" name="review[rating]" value="4" />
+                    <label for="first-rate4" title="Very good">4 stars</label>
+                    <input type="radio" id="first-rate5" name="review[rating]" value="5" />
+                    <label for="first-rate5" title="Amazing">5 stars</label>
+                </fieldset>
+            </div>
+            <!-- emd -->
+            <div class="mb-3">
+                <label for="comment" class="form-label">comment</label>
+                <textarea name="review[comment]" class="form-control" id="" cols="30" rows="5" required
+                    style="max-width: 30rem"></textarea>
+                <div class="invalid-feedback">
+                    Please leave a comment.
+                </div>
+            </div>
+
+            <button class="btn btn-dark mb-3">submit</button>
+
+
+        </form>
+
+    </div>
+
+    {% endif %}
+    <div class="review">
+        <hr>
+
+        <h3 class="">All Review</h3>
+        <div class="review_Continer">
+            {% for review in listing.reviews.all %}
+
+            <div class="reviewData">
+                <div class="">
+                    <i class="fa-regular fa-circle-user" style="font-size: clamp(21px, 2.5vw, 2rem);"></i>
+                    {{review.user.username}} &nbsp;&nbsp;&nbsp;&nbsp;
+                    {{listing.review.time}}
+
+
+                </div>
+                <hr>
+                <div class="review[rating]">
+                    <h6>
+                        Rating {{ review.rating }}
+                    </h6>
+                    <p class="starability-result" data-rating={{ review.rating }}>
+                    </p>
+
+                    <p class="">
+                        {{ review.comment }}
+                    </p>
+                </div>
+                {% if request.user.is_superuser %}
+                    <form action="{% url 'deleteReview' listing.id review.id %}" method="post">
+                        {% csrf_token %}
+                        <button type="submit" class="btn btn-primary mb-3">Delete</button>
+                    </form>
+                {% elif request.user.id == review.user.id %}
+                    <form action="{% url 'deleteReview' listing.id review.id %}" method="post">
+                            {% csrf_token %}
+                        <button type="submit" class="btn btn-primary mb-3">Delete</button>
+                    </form>
+                {% endif %}
+
+            </div>
+
+            {% endfor %}
+        </div>
+
+    </div>
+
+
+</body>
+
+{% endblock %}

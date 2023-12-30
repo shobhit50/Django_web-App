@@ -1,0 +1,64 @@
+{% extends "myfirst_app/base.html" %}
+
+{% block content %}
+<body>
+
+
+
+    <div class="row">
+        <div class="col-8 offset-2">
+            <h3>Edit Listing</h3>
+            <form action="{% url 'update' listing.id %}" method="POST" novalidate
+                class="needs-validation" enctype="multipart/form-data">
+                {% csrf_token %}
+                <div class="mb-3">
+                    <label for="title" class="form-label">Title</label>
+                    <input type="text" class="form-control" value="{{listing.title}}" placeholder="Title"
+                        name="title" required>
+                </div>
+                <div class="mb-3">
+                    <p>Preview Image</p>
+                    <img style="height: 6vw;" src="{{ listing.image_url }}" alt="">
+                </div>
+                <div class="mb-3">
+                    <label for="image" class="form-label">Uplod new Image</label>
+                    <input type="file" class="form-control" placeholder="Image link/url" name="image">
+                </div>
+
+                <div class="mb-3">
+                    <label for="description" class="form-label">Description</label>
+                    <textarea class="form-control" placeholder="Description" name="description" cols="10" rows="5"
+                        required>{{ listing.description }}</textarea>
+                </div>
+
+                <div class="row mb-3">
+                    <div class="col-md-4">
+                        <label for="price" class="form-label">Price</label>
+                        <input type="number" class="form-control" value="{{ listing.price }}"
+                            placeholder="Price" name="price" required>
+                    </div>
+                    <div class="col-md-8">
+                        <label for="country" class="form-label">Country</label>
+                        <input type="text" class="form-control" value="{{ listing.country }}"
+                            placeholder="Country" name="country" required>
+                    </div>
+                </div>
+
+                <div class="mb-3">
+                    <label for="location" class="form-label">Location</label>
+                    <input type="text" class="form-control" value="{{ listing.location }}"
+                        placeholder="Location" name="location" required>
+                </div>
+                <button class="btn btn-dark">Add</button>
+            </form>
+        </div>
+    </div>
+
+
+
+
+
+
+
+</body>
+{% endblock %}
