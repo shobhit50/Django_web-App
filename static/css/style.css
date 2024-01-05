@@ -126,15 +126,17 @@ body {
     display: flex;
     justify-content: center;
     align-items: center;
-    box-shadow: 0px 0px 20px 0px rgba(0, 0, 0, 0.134);
+    /* box-shadow: 0px 0px 20px 0px rgba(0, 0, 0, 0.134); */
 }
 
 .rap {
     width: 100%;
     max-width: 90%;
+    /* change 90% to 98% */
     display: flex;
     align-items: center;
     justify-content: center;
+    box-shadow: 0 4px 2px -2px gray;
 }
 
 .filters {

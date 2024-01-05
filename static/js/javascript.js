@@ -40,6 +40,8 @@ document.addEventListener('click', function (event) {
 
 
 
+
+
 // ---------------------------------------------
 const filters = document.querySelectorAll(".filter");
 const currentPath = window.location.pathname;
@@ -96,3 +98,12 @@ buttone.addEventListener('click', () => {
         }
     })
 })
+
+
+
+var myModal = document.getElementById('myModal')
+    var myInput = document.getElementById('myInput')
+    
+    myModal.addEventListener('shown.bs.modal', function () {
+      myInput.focus()
+    })

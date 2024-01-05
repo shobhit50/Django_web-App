@@ -3,6 +3,24 @@
 {% block content %}
 
 <!-- ----------------------------------------- -->
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!-- <div style="    box-shadow: 0px 0px 20px 0px rgba(0, 0, 0, 0.134);
+    width: 100%;
+    justify-content: center;
+    display: flex;
+    align-items: center;"> -->
 <div class="rap2">
     <div class="rap">
         <div class="filters ">
@@ -95,10 +113,80 @@
                 <label class="form-check-label" for="flexSwitchCheckDefault">Display total taxes</label>
             </div>
         </div>
+        <form form action="{% url 'search'  %}" method="POST">
+            {% csrf_token %}
+        <div class="modal" tabindex="-1" id="myModal">
+            <div class="modal-dialog modal-dialog-centered">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title">Filters</h5>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <div class="modal-body">
+                        <!-- here are redio butten -->
+                        <h5>Price</h5>
+                        <div class="form-check">
+                            <input class="form-check-input" type="radio" name="price" value="low_to_high" id="flexRadioDefault1">
+                            <label class="form-check-label" for="flexRadioDefault1">
+                                Low to High
+                            </label>
+                        </div>
+                        <div class="form-check">
+                            <input class="form-check-input" type="radio" name="price" value="high_to_low" id="flexRadioDefault2">
+                            <label class="form-check-label" for="flexRadioDefault2">
+                                High to Low
+                            </label>
+                        </div>
+                        <h5>Rating</h5>
+                        <div class="form-check">
+                            <input class="form-check-input" type="radio" name="price" value="top_to_low" id="flexRadioDefault3">
+                            <label class="form-check-label" for="flexRadioDefault3">
+                                Top to Low
+                            </label>
+                        </div>
+                        <div class="form-check">
+                            <input class="form-check-input" type="radio" name="price" value="low_to_top" id="flexRadioDefault4">
+                            <label class="form-check-label" for="flexRadioDefault4">
+                                Low to Top
+                            </label>
+                        </div>
+                      <!-- <div class="form-check">
+                        <input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault2" checked>
+                        <label class="form-check-label" for="flexRadioDefault2">
+                            Any
+                        </label>
+                      </div> -->
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal" id="filterbtn" style="border: none !important;
+                        color: white;
+                        background-color: #000000 !important; padding: 0.8rem !important;">Close</button>
+                        <button type="submit" class="btn btn-primary" id="filterbtn" style="
+                        border: none !important;
+                        color: white;
+                        background-color: #fe424d !important; padding: 0.8rem !important;">Save changes</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </form>
+        <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#myModal" id="filterbtn">
+            <i class="fa-solid fa-sliders" style="color: #545657;"></i>Filters</button>
+        </div></div>
+
+    <!-- </div> -->
 
 
-    </div>
-</div>
+
+
+
+
+
+
+
+
+
+
 <!-- --------------------------------------- -->
 <div class="row row-cols-lg-3 row-cols-lg-2 row-cols-lg-1 mt-5" style="  justify-content: center;">
     <div class="listingdata">

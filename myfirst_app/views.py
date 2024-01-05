@@ -14,8 +14,6 @@ from django.db.models import Q
 
 
 
-
-
 User = get_user_model()
 
 
@@ -23,33 +21,76 @@ User = get_user_model()
 
 #test 
 
+
+
 def search(request):
-    listings_data = []
-    print('this is search')
-    search_item = request.POST.get('search', '')
-    listings_data = Listing.objects.filter(
-        Q(location__icontains=search_item) |
-        Q(price__icontains=search_item) |
-        Q(country__icontains=search_item)
-    )
+    listings_data = Listing.objects.all()
+    listings_data = count_review(request,listings_data)
+    if request.method == 'POST':
+        search_item = request.POST.get('search', '')
+        price_filter = ''
+        rating_filter = ''
+        choice = request.POST.get('price', '')
+        if choice in ('low_to_high', 'high_to_low'):
+            print('done')
+            price_filter = choice
+        else:
+            print('not done')
+            rating_filter = choice
+
+        if search_item:
+            listings_data = listings_data.filter(
+                Q(location__icontains=search_item) |
+                Q(price__icontains=search_item) |
+                Q(country__icontains=search_item)
+            )
+
+        if price_filter:
+            print('price working',price_filter)
+            if price_filter == 'low_to_high':
+                listings_data = listings_data.order_by('price')
+            elif price_filter == 'high_to_low':
+                listings_data = listings_data.order_by('-price')
+        if rating_filter:
+            print('rating working',rating_filter)
+            listings_data = count_review(request,listings_data)
+            if rating_filter == 'top_to_low':
+                listings_data = sorted(listings_data, key=lambda x: x.avg, reverse=True)
+            elif rating_filter == 'low_to_top':
+                listings_data = sorted(listings_data, key=lambda x: x.avg, reverse=False)
+    listings_data = count_review(request,listings_data)
+
+    # listings_data = sorted(listings_data, key=lambda x: x.avg, reverse=True)
     return render(request, 'myfirst_app/listings/index.html', {'listings_data': listings_data })
 
+def count_review(request,listings_data):
+        listings_data = listings_data
+        for listing in listings_data:
+            avg = 0
+            total_reviews = listing.reviews.count()
+            if total_reviews > 0:
+                avg = sum(review.rating for review in listing.reviews.all()) / total_reviews
+                avg = round(avg, 2)
+
+            # Dynamically add avg as an attribute to the instance
+            setattr(listing, 'avg', avg)
+        return listings_data
 
 
 
 # Create your views here.
 def index(request):
     listings_data = Listing.objects.all()
-    for listing in listings_data:
-        avg = 0
-        total_reviews = listing.reviews.count()
-        if total_reviews > 0:
-            avg = sum(review.rating for review in listing.reviews.all()) / total_reviews
-            avg = round(avg, 2)
+    listings_data = count_review(request,listings_data)
+    # for listing in listings_data:
+    #     avg = 0
+    #     total_reviews = listing.reviews.count()
+    #     if total_reviews > 0:
+    #         avg = sum(review.rating for review in listing.reviews.all()) / total_reviews
+    #         avg = round(avg, 2)
 
-        # Dynamically add avg as an attribute to the instance
-        setattr(listing, 'avg', avg)
-        print("------------------------------------")
+    #     # Dynamically add avg as an attribute to the instance
+    #     setattr(listing, 'avg', avg)
     return render(request, 'myfirst_app/listings/index.html', {'listings_data': listings_data })
 
 # -----------------------------------------------------------------------------------------------------------

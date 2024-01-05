@@ -17,6 +17,20 @@
 </head>
 
 <body>
+    <style>
+        #filterbtn {
+            padding: 1rem;
+            border-radius: 0.7rem;
+            border: 1px solid black !important;
+            color: black;
+            background-color: white !important;
+            width: auto !important;
+            display: flex;
+            margin-left: 1rem;
+            align-items: center;
+            gap: 0.4rem;
+        }
+    </style>
     <!-- ------------------------------------------------------------------------------ -->
 
     <nav class="navbar navbar-expand-md bg-body-tertiary  border-bottom sticky-top">
@@ -32,13 +46,17 @@
                         <a class="nav-link" href="{% url 'index' %}">Explore</a>
                     </li>
                     <li class="nav-item navbar-nav ms-auto">
-                        <form class="d-flex" action="{% url 'search'  %}"  method="POST">
+                        <form class="d-flex" action="{% url 'search'  %}"  method="POST" style="    border-radius: 2rem;
+                        background-color: white;
+                        padding: 0.5rem 1rem 0.5rem 1rem;
+                        box-shadow: 0px 0px 11px -5px;">
                             {% csrf_token %}
                             <div class="input-group">
                                 <!-- <span class="input-group-text"><i class="fas fa-search"></i></span> -->
-                                <input class="form-control me-2" type="search" placeholder="Enter cuntery,city,price..." aria-label="Search" name="search">
+                                <input class="form-control me-2" type="search" placeholder="Enter Cuntery | City | Price." aria-label="Search" name="search" style="    border: none;">
                             </div>
-                            <button class="btn btn-outline-success" type="submit"><i class="fas fa-search"></i>Search</button>
+                            <button class="btn btn-outline-success" type="submit" style="background-color:#fe424d !important;;
+                            border-radius: 2rem; color: white;"><i class="fas fa-search" ></i></button>
                         </form>
     
                     </li>
@@ -109,27 +127,28 @@
 
 
 
-    <!-- ------------------------------------------------------------------------------ -->
+    
+<!-- --------------------------------test here---------------------------------------------------------- -->
 
-    {% if messages %}
-    {% for message in messages %}
-    <div class="row" >
-        <div class="col-6 offset-3">
-            <div class="alert alert-{{message.tags }} alert-dismissible fade show" role="alert">
-                <strong>message:</strong> {{ message }}
-                <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
-            </div>
+<!-- this is massege -->
+<!-- ------------------------------------------------------------------------------ -->
+
+{% if messages %}
+{% for message in messages %}
+<div class="row" style="    width: 100%;
+position: absolute;
+top: 5rem;">
+    <div class="col-6 offset-3">
+        <div class="alert alert-{{message.tags }} alert-dismissible fade show" role="alert">
+            <strong>message:</strong> {{ message }}
+            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
         </div>
     </div>
-    {% endfor %}
-    {% endif %}
+</div>
+{% endfor %}
+{% endif %}
 
-
-
-
-
-
-    <!-- ------------ -->
+    <!-----------------test end ----------------------------------------------------------->
     <div class="container" style="    flex: 1;">
         {% block content %}<!-- Page content   -->{% endblock %}
     </div>
