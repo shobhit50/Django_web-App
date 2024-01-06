@@ -95,17 +95,17 @@ DATABASES = {
             'NAME': 'Django',
             'ENFORCE_SCHEMA': False,
             'CLIENT': {
-                # 'host': f'mongodb+srv://shobhit:{os.environ["DB_PASS"]}@cluster0.snn3wbn.mongodb.net/Django?retryWrites=true&w=majority'
+                'host': f'mongodb+srv://shobhit:{os.environ["DB_PASS"]}@cluster0.snn3wbn.mongodb.net/Django?retryWrites=true&w=majority'
             }  
         }
 }
 
 
-# CLOUDINARY = {
-#     'cloud_name': {os.environ['CLOUD_NAME']},
-#     'api_key': {os.environ['API_KEY']},
-#     'api_secret': {os.environ['API_SECRET']},
-# }
+CLOUDINARY = {
+    'cloud_name': {os.environ['CLOUD_NAME']},
+    'api_key': {os.environ['API_KEY']},
+    'api_secret': {os.environ['API_SECRET']},
+}
 
 # Password validation
 # https://docs.djangoproject.com/en/4.1/ref/settings/#auth-password-validators
@@ -145,7 +145,7 @@ STATIC_URL = '/static/'
 STATICFILES_DIRS = [
     STATIC_DIR,
 ]
-
+STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
 # Default primary key field type
 # https://docs.djangoproject.com/en/4.1/ref/settings/#default-auto-field
 
