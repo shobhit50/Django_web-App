@@ -99,9 +99,9 @@ DATABASES = {
 
 
 CLOUDINARY = {
-    'cloud_name': 'dsuwpbpwl',
-    'api_key': '817864775882961',
-    'api_secret': 'FUsiX3EpI-KVQEEWMzFLZgFjKuM',
+    'cloud_name': 'CLOUD_NAME',
+    'api_key': 'API_KEY',
+    'api_secret': 'API_SECRET',
 }
 
 # Password validation
