@@ -92,7 +92,7 @@ DATABASES = {
             'NAME': 'Django',
             'ENFORCE_SCHEMA': False,
             'CLIENT': {
-                'host': 'mongodb+srv://shobhit:uXw9CSZfLVwBnEwj@cluster0.snn3wbn.mongodb.net/Django?retryWrites=true&w=majority'
+                'host': 'mongodb+srv://shobhit:DB_PASS@cluster0.snn3wbn.mongodb.net/Django?retryWrites=true&w=majority'
             }  
         }
 }
