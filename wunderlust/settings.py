@@ -92,16 +92,16 @@ DATABASES = {
             'NAME': 'Django',
             'ENFORCE_SCHEMA': False,
             'CLIENT': {
-                'host': 'mongodb+srv://shobhit:uXw9CSZfLVwBnEwj@cluster0.snn3wbn.mongodb.net/Django?retryWrites=true&w=majority'
+                'host': 'mongodb+srv://shobhit:DB_PASS@cluster0.snn3wbn.mongodb.net/Django?retryWrites=true&w=majority'
             }  
         }
 }
 
 
 CLOUDINARY = {
-    'cloud_name': 'dsuwpbpwl',
-    'api_key': '817864775882961',
-    'api_secret': 'FUsiX3EpI-KVQEEWMzFLZgFjKuM',
+    'cloud_name': 'CLOUD_NAME',
+    'api_key': 'API_KEY',
+    'api_secret': 'API_SECRET',
 }
 
 # Password validation
