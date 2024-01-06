@@ -11,6 +11,7 @@ from django.shortcuts import get_object_or_404
 from cloudinary.uploader import upload
 import cloudinary.api
 from django.db.models import Q
+import os
 
 
 
@@ -91,6 +92,8 @@ def count_review(request,listings_data):
 def index(request):
     listings_data = Listing.objects.all()
     listings_data = count_review(request,listings_data)
+    print(f'DB_PASS: {os.environ["DB_PASS"]}')
+
     # for listing in listings_data:
     #     avg = 0
     #     total_reviews = listing.reviews.count()
