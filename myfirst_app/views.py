@@ -21,6 +21,15 @@ User = get_user_model()
 
 #test 
 
+def category(request, category):
+    # print('category',category)
+    listings_data = Listing.objects.all()
+    listings_data = count_review(request, listings_data)
+
+    if category:
+        listings_data = listings_data.filter(category=category)
+    listings_data = count_review(request, listings_data)
+    return render(request, 'myfirst_app/listings/index.html', {'listings_data': listings_data })
 
 
 def search(request):

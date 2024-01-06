@@ -65,7 +65,7 @@ class userdata(AbstractBaseUser):
 ####################################
 # Using the Custom User Model:
 
-#you can use the custom user model like any other Django user model. 
+#you can use the custom user model like any camping Django user model. 
 # For example, 
 # when creating a new user,use 
 #  userdata.objects.create_user()      or      userdata.objects.create_superuser().
@@ -90,12 +90,25 @@ class Review(models.Model):
 
 
 class Listing(models.Model):
+    CATEGORY_CHOICES = [
+        ('city', 'city'),
+        ('beach', 'beach'),
+        ('arctic', 'arctic'),
+        ('mountains', 'mountains'),
+        ('camping', 'camping'),
+        ('new', 'new'),
+        ('farms', 'farms'),
+        ('botes', 'botes'),
+        
+    ]
+     
     title = models.CharField(max_length=255)
     description = models.TextField()
     image_url = models.CharField(max_length=500, null=True, blank=True)
     price = models.DecimalField(max_digits=10, decimal_places=2)
     location = models.CharField(max_length=255)
     country = models.CharField(max_length=255)
+    category = models.CharField(max_length=50, choices=CATEGORY_CHOICES ,  null=True, blank=True)
     reviews = models.ManyToManyField(Review)
     owner = models.ForeignKey(User, on_delete=models.CASCADE)
 

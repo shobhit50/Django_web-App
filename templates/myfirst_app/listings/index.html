@@ -26,67 +26,73 @@
         <div class="filters ">
             <div class="filter " id="Filter">
                 <div><i class="fa-solid fa-fire "></i></div>
-                <a href="/Search/city" id="Link">Trending</a>
+                <a href="/category/new" id="Link">Trending</a>
                 <!-- <p style=" margin: 0;">Trending</p> -->
             </div>
             <div class="filter" id="Filter">
                 <div><i class="fa-solid fa-umbrella-beach"></i></div>
-                <a href="/Search/beach" id="Link">Beach</a>
+                <a href="/category/beach" id="Link">Beach</a>
             </div>
             <div class="filter" id="Filter">
                 <div><i class="fa-regular fa-snowflake"></i></div>
-                <a href="/Search/arctic" id="Link">Arctic</a>
+                <a href="/category/arctic" id="Link">Arctic</a>
             </div>
             <div class="filter" id="Filter">
                 <div><i class="fa-solid fa-mountain-city"></i></div>
-                <a href="/Search/mountain" id="Link">mountains</a>
+                <a href="/category/mountain" id="Link">mountains</a>
                 <!-- <p style="margin: 0;">mountains</p> -->
             </div>
             <div class="filter" id="Filter">
                 <div><i class="fa-solid fa-campground"></i></div>
-                <a href="/Search/camping" id="Link">Camping</a>
+                <a href="/category/camping" id="Link">Camping</a>
                 <!-- <p style="margin: 0;">Camping</p> -->
             </div>
             <div class="filter" id="Filter">
                 <div><i class="fa-solid fa-key"></i></div>
-                <a href="/Search/new" id="Link">New</a>
+                <a href="/category/new" id="Link">New</a>
                 <!-- <p style="margin: 0;">New</p> -->
             </div>
             <div class="filter" id="Filter">
                 <div><i class="fa-solid fa-tractor"></i></div>
-                <a href="/Search/Farms" id="Link">Farms</a>
+                <a href="/category/farms" id="Link">Farms</a>
                 <!-- <p style="margin: 0;">Farms</p> -->
             </div>
             <div class="filter" id="Filter">
                 <div><i class="fa-solid fa-tree-city"></i></div>
-                <a href="/Search/botes" id="Link">Botes</a>
+                <a href="/category/botes" id="Link">Botes</a>
                 <!-- <p style="margin: 0;">Botes</p> -->
             </div>
             <div class="filter" id="Filter">
                 <div><i class="fa-solid fa-ship"></i></div>
-                <p style="margin: 0;">Botes</p>
+                <a href="/category/botes" id="Link">Botes</a>
+                <!-- <p style="margin: 0;">Botes</p> -->
             </div>
 
             <!-- 22222222 -->
             <div class="filter" id="Filter">
                 <div><i class="fa-solid fa-tractor"></i></div>
-                <p style="margin: 0;">Farms</p>
+                <a href="/category/farms" id="Link">Farms</a>
+                <!-- <p style="margin: 0;">Farms</p> -->
             </div>
             <div class="filter" id="Filter">
                 <div><i class="fa-solid fa-tree-city"></i></div>
-                <p style="margin: 0;">Botes</p>
+                <a href="/category/botes" id="Link">Botes</a>
+                <!-- <p style="margin: 0;">Botes</p> -->
             </div>
             <div class="filter" id="Filter">
                 <div><i class="fa-solid fa-ship"></i></div>
-                <p style="margin: 0;">Botes</p>
+                <a href="/category/botes" id="Link">Botes</a>
+                <!-- <p style="margin: 0;">Botes</p> -->
             </div>
             <div class="filter" id="Filter">
                 <div><i class="fa-solid fa-tractor"></i></div>
-                <p style="margin: 0;">Farms</p>
+                <a href="/category/farms" id="Link">Farms</a>
+                <!-- <p style="margin: 0;">Farms</p> -->
             </div>
             <div class="filter" id="Filter">
                 <div><i class="fa-solid fa-tree-city"></i></div>
-                <p style="margin: 0;">Botes</p>
+                <a href="/category/botes" id="Link">Botes</a>
+                <!-- <p style="margin: 0;">Botes</p> -->
             </div>
             <!-- <div class="filter" id="Filter">
                 <div><i class="fa-solid fa-ship"></i></div>
@@ -115,66 +121,72 @@
         </div>
         <form form action="{% url 'search'  %}" method="POST">
             {% csrf_token %}
-        <div class="modal" tabindex="-1" id="myModal">
-            <div class="modal-dialog modal-dialog-centered">
-                <div class="modal-content">
-                    <div class="modal-header">
-                        <h5 class="modal-title">Filters</h5>
-                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                    </div>
-                    <div class="modal-body">
-                        <!-- here are redio butten -->
-                        <h5>Price</h5>
-                        <div class="form-check">
-                            <input class="form-check-input" type="radio" name="price" value="low_to_high" id="flexRadioDefault1">
-                            <label class="form-check-label" for="flexRadioDefault1">
-                                Low to High
-                            </label>
+            <div class="modal" tabindex="-1" id="myModal">
+                <div class="modal-dialog modal-dialog-centered">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h5 class="modal-title">Filters</h5>
+                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                         </div>
-                        <div class="form-check">
-                            <input class="form-check-input" type="radio" name="price" value="high_to_low" id="flexRadioDefault2">
-                            <label class="form-check-label" for="flexRadioDefault2">
-                                High to Low
-                            </label>
-                        </div>
-                        <h5>Rating</h5>
-                        <div class="form-check">
-                            <input class="form-check-input" type="radio" name="price" value="top_to_low" id="flexRadioDefault3">
-                            <label class="form-check-label" for="flexRadioDefault3">
-                                Top to Low
-                            </label>
-                        </div>
-                        <div class="form-check">
-                            <input class="form-check-input" type="radio" name="price" value="low_to_top" id="flexRadioDefault4">
-                            <label class="form-check-label" for="flexRadioDefault4">
-                                Low to Top
-                            </label>
-                        </div>
-                      <!-- <div class="form-check">
+                        <div class="modal-body">
+                            <!-- here are redio butten -->
+                            <h5>Price</h5>
+                            <div class="form-check">
+                                <input class="form-check-input" type="radio" name="price" value="low_to_high"
+                                    id="flexRadioDefault1">
+                                <label class="form-check-label" for="flexRadioDefault1">
+                                    Low to High
+                                </label>
+                            </div>
+                            <div class="form-check">
+                                <input class="form-check-input" type="radio" name="price" value="high_to_low"
+                                    id="flexRadioDefault2">
+                                <label class="form-check-label" for="flexRadioDefault2">
+                                    High to Low
+                                </label>
+                            </div>
+                            <h5>Rating</h5>
+                            <div class="form-check">
+                                <input class="form-check-input" type="radio" name="price" value="top_to_low"
+                                    id="flexRadioDefault3">
+                                <label class="form-check-label" for="flexRadioDefault3">
+                                    Top to Low
+                                </label>
+                            </div>
+                            <div class="form-check">
+                                <input class="form-check-input" type="radio" name="price" value="low_to_top"
+                                    id="flexRadioDefault4">
+                                <label class="form-check-label" for="flexRadioDefault4">
+                                    Low to Top
+                                </label>
+                            </div>
+                            <!-- <div class="form-check">
                         <input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault2" checked>
                         <label class="form-check-label" for="flexRadioDefault2">
                             Any
                         </label>
                       </div> -->
-                    </div>
-                    <div class="modal-footer">
-                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal" id="filterbtn" style="border: none !important;
+                        </div>
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal" id="filterbtn"
+                                style="border: none !important;
                         color: white;
                         background-color: #000000 !important; padding: 0.8rem !important;">Close</button>
-                        <button type="submit" class="btn btn-primary" id="filterbtn" style="
+                            <button type="submit" class="btn btn-primary" id="filterbtn" style="
                         border: none !important;
                         color: white;
                         background-color: #fe424d !important; padding: 0.8rem !important;">Save changes</button>
+                        </div>
                     </div>
                 </div>
             </div>
-        </div>
-    </form>
+        </form>
         <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#myModal" id="filterbtn">
             <i class="fa-solid fa-sliders" style="color: #545657;"></i>Filters</button>
-        </div></div>
+    </div>
+</div>
 
-    <!-- </div> -->
+<!-- </div> -->
 
 
 
@@ -221,15 +233,15 @@
                                                 background-color: #2c2c2c;
                                                 position: absolute;
                                                 right: 0;">
-                                            {% if listing.avg > 0 %}
-                                                &#9733;{{ listing.avg }}
-                                            {% else %}
-                                                &#9734;{{ listing.avg }}
-                                            {% endif %}
-                                                                       
-                                                                                                                                           
-                                                </i>
-                                                
+                                {% if listing.avg > 0 %}
+                                &#9733;{{ listing.avg }}
+                                {% else %}
+                                &#9734;{{ listing.avg }}
+                                {% endif %}
+
+
+                            </i>
+
 
                         </span>
                     </p>
