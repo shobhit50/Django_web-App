@@ -104,10 +104,16 @@ DATABASES = {
 
 
 CLOUDINARY = {
-    'cloud_name': {os.environ['CLOUD_NAME']},
-    'api_key': {os.environ['API_KEY']},
-    'api_secret': {os.environ['API_SECRET']},
+    'cloud_name': 'dsuwpbpwl',
+    'api_key': '817864775882961',
+    'api_secret': 'FUsiX3EpI-KVQEEWMzFLZgFjKuM',
 }
+
+# CLOUDINARY = {
+#     'cloud_name': {os.environ['CLOUD_NAME']},
+#     'api_key': {os.environ['API_KEY']},
+#     'api_secret': {os.environ['API_SECRET']},
+# }
 
 # Password validation
 # https://docs.djangoproject.com/en/4.1/ref/settings/#auth-password-validators
@@ -143,7 +149,7 @@ USE_TZ = True
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/4.0/howto/static-files/
 
-STATIC_URL = '/static/'
+STATIC_URL = 'static/'
 STATICFILES_DIRS = (     
 os.path.join(BASE_DIR, 'static'), 
 ) 
