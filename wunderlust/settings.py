@@ -29,7 +29,7 @@ SECRET_KEY = 'django-insecure-eiulkq204d&2h^l)*a6q*!3gc2*v#0)*r%q03%tf&mbzf6qc6$
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['wunderlust-django.onrender.com',]
 
 AUTH_USER_MODEL = 'myfirst_app.userdata'
 
@@ -92,16 +92,16 @@ DATABASES = {
             'NAME': 'Django',
             'ENFORCE_SCHEMA': False,
             'CLIENT': {
-                'host': 'mongodb+srv://shobhit:DB_PASS@cluster0.snn3wbn.mongodb.net/Django?retryWrites=true&w=majority'
+                'host': f'mongodb+srv://shobhit:{os.environ["DB_PASS"]}@cluster0.snn3wbn.mongodb.net/Django?retryWrites=true&w=majority'
             }  
         }
 }
 
 
 CLOUDINARY = {
-    'cloud_name': 'CLOUD_NAME',
-    'api_key': 'API_KEY',
-    'api_secret': 'API_SECRET',
+    'cloud_name': {os.environ['CLOUD_NAME']},
+    'api_key': {os.environ['API_KEY']},
+    'api_secret': {os.environ['API_SECRET']},
 }
 
 # Password validation
