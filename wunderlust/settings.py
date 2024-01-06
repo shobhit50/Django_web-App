@@ -29,11 +29,10 @@ SECRET_KEY = 'django-insecure-eiulkq204d&2h^l)*a6q*!3gc2*v#0)*r%q03%tf&mbzf6qc6$
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-<<<<<<< HEAD
-ALLOWED_HOSTS = ['wunderlust-django.onrender.com',]
-=======
+
 ALLOWED_HOSTS = ['wunderlust-django.onrender.com']
->>>>>>> bd3b8692643d8fe2fe0e8cbd13bd6711c5d267eb
+
+
 
 AUTH_USER_MODEL = 'myfirst_app.userdata'
 
