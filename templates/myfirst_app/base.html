@@ -13,7 +13,7 @@
         crossorigin="anonymous" referrerpolicy="no-referrer" />
 
     <link rel="stylesheet" href="{% static 'css/style.css' %}">
-    <link rel="stylesheet" href="{% static 'css/Rasting.css' %}">
+    <link rel="stylesheet" href="{% static 'css/Rating.css' %}">
 </head>
 
 <body>
@@ -46,19 +46,21 @@
                         <a class="nav-link" href="{% url 'index' %}">Explore</a>
                     </li>
                     <li class="nav-item navbar-nav ms-auto">
-                        <form class="d-flex" action="{% url 'search'  %}"  method="POST" style="    border-radius: 2rem;
+                        <form class="d-flex" action="{% url 'search'  %}" method="POST" style="    border-radius: 2rem;
                         background-color: white;
                         padding: 0.5rem 1rem 0.5rem 1rem;
                         box-shadow: 0px 0px 11px -5px;">
                             {% csrf_token %}
                             <div class="input-group">
                                 <!-- <span class="input-group-text"><i class="fas fa-search"></i></span> -->
-                                <input class="form-control me-2" type="search" placeholder="Enter Cuntery | City | Price." aria-label="Search" name="search" style="    border: none;">
+                                <input class="form-control me-2" type="search"
+                                    placeholder="Enter Cuntery | City | Price." aria-label="Search" name="search"
+                                    style="    border: none;">
                             </div>
                             <button class="btn btn-outline-success" type="submit" style="background-color:#fe424d !important;;
-                            border-radius: 2rem; color: white;"><i class="fas fa-search" ></i></button>
+                            border-radius: 2rem; color: white;"><i class="fas fa-search"></i></button>
                         </form>
-    
+
                     </li>
                     <div class="navdrop">
                         {% if request.user.is_authenticated %}
@@ -127,26 +129,26 @@
 
 
 
-    
-<!-- --------------------------------test here---------------------------------------------------------- -->
 
-<!-- this is massege -->
-<!-- ------------------------------------------------------------------------------ -->
+    <!-- --------------------------------test here---------------------------------------------------------- -->
 
-{% if messages %}
-{% for message in messages %}
-<div class="row" style="    width: 100%;
+    <!-- this is massege -->
+    <!-- ------------------------------------------------------------------------------ -->
+
+    {% if messages %}
+    {% for message in messages %}
+    <div class="row" style="    width: 100%;
 position: absolute;
 top: 5rem;">
-    <div class="col-6 offset-3">
-        <div class="alert alert-{{message.tags }} alert-dismissible fade show" role="alert">
-            <strong>message:</strong> {{ message }}
-            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+        <div class="col-6 offset-3">
+            <div class="alert alert-{{message.tags }} alert-dismissible fade show" role="alert">
+                <strong>message:</strong> {{ message }}
+                <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+            </div>
         </div>
     </div>
-</div>
-{% endfor %}
-{% endif %}
+    {% endfor %}
+    {% endif %}
 
     <!-----------------test end ----------------------------------------------------------->
     <div class="container" style="    flex: 1;">

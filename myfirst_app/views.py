@@ -92,7 +92,6 @@ def count_review(request,listings_data):
 def index(request):
     listings_data = Listing.objects.all()
     listings_data = count_review(request,listings_data)
-    print(f'DB_PASS: {os.environ["DB_PASS"]}')
 
     # for listing in listings_data:
     #     avg = 0
