@@ -86,7 +86,7 @@ DATABASES = {
             'NAME': 'Django',
             'ENFORCE_SCHEMA': False,
             'CLIENT': {
-                'host': f'mongodb+srv://shobhit:{os.environ["DB_PASS"]}@cluster0.snn3wbn.mongodb.net/Django?retryWrites=true&w=majority'
+                # 'host': f'mongodb+srv://shobhit:{os.environ["DB_PASS"]}@cluster0.snn3wbn.mongodb.net/Django?retryWrites=true&w=majority'
             }  
         }
 }
