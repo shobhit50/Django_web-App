@@ -21,7 +21,7 @@ SECRET_KEY = 'django-insecure-eiulkq204d&2h^l)*a6q*!3gc2*v#0)*r%q03%tf&mbzf6qc6$
 DEBUG = True
 
 
-ALLOWED_HOSTS = ['wunderlust-django.onrender.com']
+ALLOWED_HOSTS = ['*']
 
 
 
